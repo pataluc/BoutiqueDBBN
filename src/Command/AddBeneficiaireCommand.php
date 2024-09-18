@@ -42,8 +42,9 @@ class AddBeneficiaireCommand extends Command
         $nom = $input->getArgument('nom');
         $beneficiaire->setNom($nom);
 
-        $question = new ChoiceQuestion('Type de bénéficiaire à créer ? ',
-            array_map(fn($element): string => $element->value, TypeBeneficiaire::cases())
+        $question = new ChoiceQuestion(
+            'Type de bénéficiaire à créer ? ',
+            array_map(fn ($element): string => $element->value, TypeBeneficiaire::cases())
         );
         $type = $helper->ask($input, $output, $question);
         $beneficiaire->setType(TypeBeneficiaire::from($type));

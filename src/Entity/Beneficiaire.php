@@ -20,6 +20,12 @@ class Beneficiaire
     #[ORM\Column(enumType: TypeBeneficiaire::class)]
     private ?TypeBeneficiaire $type = null;
 
+    public function __construct(string $_nom, TypeBeneficiaire $_type)
+    {
+        $this->nom = $_nom;
+        $this->type = $_type;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

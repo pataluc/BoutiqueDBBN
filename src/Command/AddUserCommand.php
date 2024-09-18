@@ -38,7 +38,7 @@ class AddUserCommand extends Command
 
         /** @var QuestionHelper $helper */
         $helper = $this->getHelper('question');
-        
+
         $user = new User();
         $username = $input->getArgument('username');
         $user->setUsername($username);
