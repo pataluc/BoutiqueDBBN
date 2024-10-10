@@ -14,11 +14,19 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Config\Doctrine\Dbal\ConnectionConfig\ReplicaConfig;
 
 class HelloAssoWebhookController extends AbstractController
 {
+    #[Route('/', name: 'home')]
+    public function homeAction(): Response
+    {
+        return $this->render('index.html.twig');
+    }
+
+
     #[Route('/webhook/helloasso/{authToken}', name: 'app_hello_asso_webhook', methods: [Request::METHOD_POST])]
-    public function index(
+    public function webhookAction(
         Request $request,
         string $authToken,
         ParameterBagInterface $parameters,
